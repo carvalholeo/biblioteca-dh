@@ -1,11 +1,11 @@
 // Update with your config settings.
 const path = require('path');
 
-const DB_CLIENT = process.env.DB_CLIENT ?? 'mysql' || 'mysql'
-const DB_SCHEMA = process.env.DB_SCHEMA ?? 'biblioteca' || 'biblioteca'
-const DB_HOST = process.env.DB_HOST ?? 'localhost' || 'localhost'
-const DB_USERNAME = process.env.DB_USERNAME ?? 'root' || 'root'
-const DB_PASSWORD = process.env.DB_PASSWORD ?? '' || ''
+const DB_CLIENT = process.env.DB_CLIENT || 'mysql'
+const DB_SCHEMA = process.env.DB_SCHEMA || 'biblioteca'
+const DB_HOST = process.env.DB_HOST || 'localhost'
+const DB_USERNAME = process.env.DB_USERNAME  || 'root'
+const DB_PASSWORD = process.env.DB_PASSWORD || ''
 
 module.exports = {
   development: {
