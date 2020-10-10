@@ -1,14 +1,20 @@
 // Update with your config settings.
 const path = require('path');
 
+const DB_CLIENT = process.env.DB_CLIENT ?? 'mysql' || 'mysql'
+const DB_SCHEMA = process.env.DB_SCHEMA ?? 'biblioteca' || 'biblioteca'
+const DB_HOST = process.env.DB_HOST ?? 'localhost' || 'localhost'
+const DB_USERNAME = process.env.DB_USERNAME ?? 'root' || 'root'
+const DB_PASSWORD = process.env.DB_PASSWORD ?? '' || ''
+
 module.exports = {
   development: {
-    client: 'mysql',
+    client: DB_CLIENT,
     connection: {
-      database: 'biblioteca',
-      host: 'localhost',
-      user: 'root',
-      password: ''
+      database: DB_SCHEMA,
+      host: DB_HOST,
+      user: DB_USERNAME,
+      password: DB_PASSWORD
     },
     migrations: {
       tableName: 'knex_migrations',
@@ -20,11 +26,11 @@ module.exports = {
   },
 
   staging: {
-    client: 'postgresql',
+    client: DB_CLIENT,
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: DB_SCHEMA,
+      user:     DB_USERNAME,
+      password: DB_PASSWORD
     },
     pool: {
       min: 2,
@@ -36,11 +42,11 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: DB_CLIENT,
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: DB_SCHEMA,
+      user:     DB_USERNAME,
+      password: DB_PASSWORD
     },
     pool: {
       min: 2,
