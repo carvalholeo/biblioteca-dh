@@ -1,0 +1,25 @@
+{
+  "name": "biblioteca",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "configurar": "npx knex migrate:latest",
+    "postconfigurar": "npx knex seed:run"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "knex": "^0.21.6",
+    "morgan": "~1.9.1",
+    "mssql": "^6.2.3",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.4",
+    "oracledb": "^5.0.0",
+    "pg": "^8.4.0"
+  }
+}
