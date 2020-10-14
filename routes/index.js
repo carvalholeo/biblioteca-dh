@@ -1,16 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const conexao = require('../database/conexao');
+
+const BaseController = require('../controllers/BaseController');
 
 /* GET home page. */
-router.get('/', async (req, res, next) => {
-  const livros = await conexao('livros')
-    .select('*')
-    .orderBy('disponivel_venda', 'DESC')
-    .orderBy('titulo', 'asc');
-
-  res.render('index', { title: 'Biblioteca', livros });
-});
+router.get('/', BaseController.index);
 
 module.exports = router;

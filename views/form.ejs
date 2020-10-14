@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar um livro</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+</head>
+<body>
+  <form action="/livros/criar" method="post" class="container mt-4">
+    <h1 class="pb-4">Criar um novo livro</h1>
+    <div class="form-group">
+      <label for="titulo">Titulo</label>
+      <input class="form-control" type="text" name="titulo" id="titulo">
+    </div>
+
+    <div class="form-group">
+      <label for="ano">Ano de lançamento</label>
+      <input class="form-control" type="number" name="ano_lancamento" id="ano">
+    </div>
+
+    <div class="form-group">
+      <label for="autor">Autor</label>
+      <input class="form-control" type="text" name="autor" id="autor">
+    </div>
+
+    <div class="form-group">
+      <label for="disponibilidade">Está à venda?</label>
+      <select class="form-control" name="disponivel_venda" id="disponibilidade">
+        <option value="true" selected>Sim</option>
+        <option value="false">Não</option>
+      </select>
+    </div>
+
+    <input type="submit" value="Cadastrar" class="btn btn-primary">
+  </form>
+</body>
+</html>
