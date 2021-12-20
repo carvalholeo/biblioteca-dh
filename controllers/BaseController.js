@@ -1,9 +1,15 @@
-const livros = require("../services/database");
+const listaDeLivros = require("../services/database");
 
 const BaseController = {
-  index: (req, res) => {
-    res.render('index', { title: 'Biblioteca', livros });
-  }
+  index: (request, response) => {
+    response.render('index', {
+      title: 'Estante Virtual',
+      theBookIsOnTheTable: listaDeLivros,
+      ehUsuario: false
+    })
+  },
+  delete: '',
+  list: '',
 }
 
 module.exports = BaseController;
