@@ -12,6 +12,9 @@ const livrosRouter = require('./routes/livros');
 
 const app = express();
 
+let contador = 0;
+let arrayDePaginas = [];
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -21,6 +24,33 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next){
+  // console.log('Página acessada: ' + req.path)
+  // contador++;
+  // console.log('quantidade de acessos: '+ contador);
+  // next()
+
+  // Criar um array para manipular
+  // Criar um middleware global
+  // A cada requisição, adicionar a página acessada no array
+  // Lembre-se de usar o next
+
+  // if (req.path === '/') {
+  //   next();
+  // } else {
+  //   res.send('não está tudo bem')
+  // }
+  next()
+})
+
+app.use(function(req, res, next) {
+  arrayDePaginas.push(req.path);
+  console.log(arrayDePaginas)
+  next()
+})
+
+
 
 app.use('/', indexRouter);
 app.use('/livros', livrosRouter);
