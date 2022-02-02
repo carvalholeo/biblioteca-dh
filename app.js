@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session')
 
 const indexRouter = require('./routes/index');
 const livrosRouter = require('./routes/livros');
@@ -24,6 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// deepcode ignore HardcodedNonCryptoSecret: <please specify a reason of ignoring this>
+app.use(session({
+  secret: 'senha super secreta da KGB',
+  resave: false,
+  saveUninitialized: false,
+  name: 'sessao_biblioteca'
+}));
 
 app.use(function(req, res, next){
   // console.log('Página acessada: ' + req.path)
@@ -46,7 +54,15 @@ app.use(function(req, res, next){
 
 app.use(function(req, res, next) {
   arrayDePaginas.push(req.path);
-  console.log(arrayDePaginas)
+
+  if (typeof req.session.paginaAnterior === "undefined") {
+    req.session.paginaAnterior = req.path;
+  } else {
+    req.session.paginaAnterior = req.session.paginaAcessada;
+  }
+
+  req.session.paginaAcessada = req.path
+
   next()
 })
 
