@@ -23,7 +23,8 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 // deepcode ignore HardcodedNonCryptoSecret: <please specify a reason of ignoring this>
 app.use(session({
@@ -31,6 +32,12 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   name: 'sessao_biblioteca'
+}));
+
+app.use(cookieParser('senha super secreta da KGB', {
+  httpOnly: true,
+  expires: new Date('2022-02-04T00:03:00'),
+  maxAge: 300
 }));
 
 app.use(function(req, res, next){

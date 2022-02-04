@@ -19,7 +19,7 @@ const verificaSessao = require('../middlewares/verificaSessao');
 
 router.get('/', contador, BaseController.index);
 
-router.use(verificaSessao)
+// router.use(verificaSessao)
 
 router.get('/teste', (req, res) => {
   res.send('logado')
